@@ -1,0 +1,303 @@
+// app.scss
+$font-stack: 'Segoe UI', sans-serif;
+$mainColor: rgb(16, 16, 16);
+$secondaryColor: rgb(51, 51, 51);
+$tank: rgb(72, 113, 160);
+$dps: rgb(154, 72, 72);
+$healer: rgb(42, 73, 29);
+
+body {
+  color: $mainColor;
+  background: white;
+  font-family: $font-stack;
+  #root {
+    position: relative;
+    display: inline-flex;
+    table {
+      margin-top: 5px;
+      border-collapse: collapse;
+    }
+    a {
+      font-style: none;
+      text-decoration: none;
+      color: $secondaryColor;
+      font-weight: 500;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.charaHolder {
+  display: inline-block;
+  border: 1px solid $mainColor;
+  padding: 5px;
+  margin: 5px;
+  width: 250px;
+  background: lighten($mainColor, 90%);
+  .currentGearSelect {
+    &> select {
+      width: 100%;
+      padding: 5px;
+    }
+  }
+  .charaInfo {
+    text-align: center;
+    img.charaImg {
+      width: 125px;
+    }
+    strong {
+      font-size: 1.5em;
+      white-space: nowrap;
+      overflow: hidden;              /* "overflow" value must be different from  visible"*/ 
+      -o-text-overflow: ellipsis;    /* Opera < 11*/
+      text-overflow:    ellipsis;    /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
+    }
+    span {
+      display: inline-block;
+      width:  100%;
+    }
+  }
+}
+.charaStats,
+.charaGear {
+  margin: 5px 0px;
+  border: 1px solid $mainColor;
+  table {
+    width: 100%;
+    caption {
+      font-weight: bold;
+    }
+    tr {
+      td {
+        width: 10%;
+        text-align: right;
+        padding: 0px 5px;
+      }
+      .title {
+        font-weight: 500;
+        width: 90%;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.charaStats {
+  min-height: 580px;
+  table.core_table {
+    tr {
+      border-bottom-style: solid;
+      border-bottom-width: 7px;
+      &.HP,
+      &.hp {
+        border-bottom-color: rgb(129, 167, 33);
+      }
+      &.CP,
+      &.cp {
+        border-bottom-color: rgb(84, 17, 160);
+      }
+      &.GP,
+      &.gp {
+        border-bottom-color: rgb(32, 150, 185);
+      }
+      &.MP,
+      &.mp {
+        border-bottom-color: rgb(220, 124, 157);
+      }
+      &.TP,
+      &.tp {
+        border-bottom-color: rgb(245, 157, 38);
+      }
+    }
+  }
+}
+
+.charaGear {
+  .gearTable {
+    .gearInfo {
+      min-height: 100px;
+      margin-bottom: 5px;
+      .clickEventHolder {
+        padding: 0px 2px;
+        cursor: pointer;
+        &:hover {
+          background: $secondaryColor;
+          color: white;
+        }
+        .toggleArrow {
+          font-weight: 900;
+          font-size: 1.4em;
+          line-height: 1em;
+          float: right;
+        }
+      }
+      .slotInfo {
+        .classJob,
+        .classJobLvl {
+          display: inline;
+        }
+        .classJobLvl {
+          padding-right: 5px;
+          float: right;
+        }
+        a {
+          display: inline-flex;
+          width: 100%;
+          img {
+            width: 40px;
+            height: 40px;
+            padding: 2px;
+          }
+        }
+      }
+    }
+    .gearDetails {
+      min-height: 300px;
+      .attrs_holder {
+        min-height: 100px;
+      }
+    }
+    strong.title {
+      font-size: 1.1em;
+    }
+  }
+  .offhand_table {
+    display: none;
+    .toggleArrow {
+      display: none;
+    }
+    .gearDetails  {
+      display: block !important;
+    }
+    .clickEventHolder {
+      cursor: default !important;
+      &:hover {
+        background: none !important;
+        color: $mainColor !important;
+      }
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.GLA, .MRD, .PLD, .WAR, .DRK {
+  background: lighten($tank, 45%);
+  a {
+    color: $tank !important;
+  }
+  .clickEventHolder:hover {
+    background: $tank !important;
+    color: white;
+  }
+}
+.PGL, .LNC, .ARC, .THM, .MNK,
+.DRG, .BRD, .BLM, .ACN, .SMN,
+.ROG, .NIN, .MCH, .SAM, .RDM {
+  background: lighten($dps, 50%);
+  a {
+    color: $dps !important;
+  }
+  .clickEventHolder:hover {
+    background: $dps !important;
+    color: white;
+  }
+}
+.CNJ, .WHM, .SCH, .AST {
+  background: lighten($healer, 70%);
+  a {
+    color: $healer !important;
+  }
+  .clickEventHolder:hover {
+    background: $healer !important;
+    color: white;
+  }
+}
+
+.mark {
+  color: red;
+  font-weight: bold;
+}
+
+/*
+==============================================
+slideExpandUp
+==============================================
+*/
+
+
+.slideExpandUp{
+	animation-name: slideExpandUp;
+	-webkit-animation-name: slideExpandUp;	
+
+	animation-duration: 1.6s;	
+	-webkit-animation-duration: 1.6s;
+
+	animation-timing-function: ease-out;	
+	-webkit-animation-timing-function: ease -out;
+
+	visibility: visible !important;	
+}
+
+@keyframes slideExpandUp {
+	0% {
+		transform: translateY(100%) scaleX(0.5);
+	}
+	30%{
+		transform: translateY(-8%) scaleX(0.5);
+	}	
+	40%{
+		transform: translateY(2%) scaleX(0.5);
+	}
+	50%{
+		transform: translateY(0%) scaleX(1.1);
+	}
+	60%{
+		transform: translateY(0%) scaleX(0.9);		
+	}
+	70% {
+		transform: translateY(0%) scaleX(1.05);
+	}			
+	80%{
+		transform: translateY(0%) scaleX(0.95);		
+	}
+	90% {
+		transform: translateY(0%) scaleX(1.02);
+	}	
+	100%{
+		transform: translateY(0%) scaleX(1);		
+	}
+}
+
+@-webkit-keyframes slideExpandUp {
+	0% {
+		-webkit-transform: translateY(100%) scaleX(0.5);
+	}
+	30%{
+		-webkit-transform: translateY(-8%) scaleX(0.5);
+	}	
+	40%{
+		-webkit-transform: translateY(2%) scaleX(0.5);
+	}
+	50%{
+		-webkit-transform: translateY(0%) scaleX(1.1);
+	}
+	60%{
+		-webkit-transform: translateY(0%) scaleX(0.9);		
+	}
+	70% {
+		-webkit-transform: translateY(0%) scaleX(1.05);
+	}			
+	80%{
+		-webkit-transform: translateY(0%) scaleX(0.95);		
+	}
+	90% {
+		-webkit-transform: translateY(0%) scaleX(1.02);
+	}	
+	100%{
+		-webkit-transform: translateY(0%) scaleX(1);		
+	}
+}
